@@ -8,7 +8,8 @@ public class TestClient {
     public static void main(String[] args) throws IOException {
         Socket socket = new Socket("localhost", 8888);
         OutputStream out = socket.getOutputStream();
-        out.write("GET /index.html Http/1.1".getBytes());
+//        out.write("GET /index.html Http/1.1".getBytes());
+        out.write("GET /servlet/TimeServlet Http/1.1".getBytes());
         socket.shutdownOutput();
 
         InputStream input = socket.getInputStream();

@@ -1,5 +1,6 @@
 package connector;
 
+import processor.ServletProcessor;
 import processor.StaticProcessor;
 
 import java.io.Closeable;
@@ -53,8 +54,15 @@ public class Connector implements Runnable {
 
                 Response response = new Response(output);
                 response.setRequest(request);
-                StaticProcessor processor = new StaticProcessor();
-                processor.process(request, response);
+
+                if (request.getRequestUri().startsWith("/servlet/")) {
+                    //请求动态资源
+                    ServletProcessor servletProcessor = new ServletProcessor();
+                    servletProcessor.process(request, response);
+                } else {
+                    StaticProcessor processor = new StaticProcessor();
+                    processor.process(request, response);
+                }
 
                 close(socket);
             }

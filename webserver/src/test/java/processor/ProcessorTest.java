@@ -11,7 +11,7 @@ import java.net.URLClassLoader;
 
 public class ProcessorTest {
 
-    private static String servletRequest = "GET /TimeServlet HTTP/1.1";
+    private static String servletRequest = "GET /servlet/TimeServlet HTTP/1.1";
 
     @Test
     public void given_ServletRequest_thenLoadServlet() throws MalformedURLException, IllegalAccessException, InstantiationException, ClassNotFoundException {
